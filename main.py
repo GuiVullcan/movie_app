@@ -34,3 +34,7 @@ def rate_movie(rating: schemas.RatingCreate, db: Session = Depends(get_db)):
 @app.post("/watched/")
 def mark_watched(w: schemas.WatchedCreate, db: Session = Depends(get_db)):
     return crud.mark_watched(db, w)
+
+@app.get("/")
+def root():
+    return {"message": "API Movie App ativa. Acesse /docs para ver a documentação."}
