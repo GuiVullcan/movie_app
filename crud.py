@@ -11,7 +11,7 @@ ALGORITHM = "HS256"
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 def hash_password(password: str) -> str:
-    truncated = password[:72]  # corta no máximo 72 caracteres
+    truncated = password.encode("utf-8")[:72].decode("utf-8", "ignore")
     return pwd_context.hash(truncated)
 
 def verify_password(plain, hashed):
